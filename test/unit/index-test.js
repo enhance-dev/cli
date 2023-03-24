@@ -27,7 +27,7 @@ function reset () {
 
 test('Set up env', t => {
   t.plan(1)
-  t.ok(begin, 'Begin entry is present')
+  t.ok(begin, 'Enhance entry is present')
 })
 
 test('Args', async t => {

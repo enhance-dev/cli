@@ -15,7 +15,7 @@ async function runTests (runType, t) {
 
   let newAppDir = 'new'
   let installing = /Installing dependencies/
-  // let appFound = /Existing Begin app already found in this directory/
+  // let appFound = /Existing Enhance app already found in this directory/
   let url, cwd
 
   t.test(`${mode} new - normal, with live npm install`, async t => {
@@ -28,7 +28,7 @@ async function runTests (runType, t) {
     t.equal(r.code, 0, 'Exited 0')
   })
 
-  t.test(`${mode} Start Begin dev`, async t => {
+  t.test(`${mode} Start Enhance dev`, async t => {
     let port = await start[runType](t, cwd)
     url = `http://localhost:${port}`
   })

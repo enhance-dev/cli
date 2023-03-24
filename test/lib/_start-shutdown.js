@@ -11,7 +11,7 @@ let isWin = process.platform.startsWith('win')
 let binPath = join(cwd, 'build', `begin${isWin ? '.exe' : ''}`)
 let bin = join(binPath)
 
-let ready = /Begin dev server \(.*\) ready!/
+let ready = /Enhance dev server \(.*\) ready!/
 
 async function startDev (type, t, dir, reuse, options = {}) {
   let port = await getPort()
@@ -39,7 +39,7 @@ async function startDev (type, t, dir, reuse, options = {}) {
       if (print && started) { console.log(chunk.toString()) }
       if ((data.match(ready) || data.includes(confirmStarted)) && !started) {
         started = true
-        t.pass(`Begin dev server started (${type}, http: ${port}, _arc: ${port})`)
+        t.pass(`Enhance dev server started (${type}, http: ${port}, _arc: ${port})`)
         resolve(port)
       }
     }
@@ -87,7 +87,7 @@ async function verifyShutdown (t) {
   }
   catch (err) {
     let errs = [ 'ECONNREFUSED', 'ECONNRESET' ]
-    t.ok(errs.includes(err.code), `Begin dev server successfully shut down`)
+    t.ok(errs.includes(err.code), `Enhance dev server successfully shut down`)
     url = undefined
   }
 }

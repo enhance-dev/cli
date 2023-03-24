@@ -16,7 +16,7 @@ async function action (params) {
   let { debug, verbose } = args
 
   // TODO: output Sandbox start via printer
-  let ver = `Begin dev server (${appVersion})`
+  let ver = `Enhance dev server (${appVersion})`
   let logLevel = debug ? 'debug' : undefined || verbose ? 'verbose' : undefined
   let quiet = logLevel ? false : true
 

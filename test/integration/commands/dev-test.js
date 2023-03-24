@@ -25,7 +25,7 @@ async function runTests (runType, t) {
 
   let newDevDir = 'dev'
 
-  t.test(`${mode} Start Begin dev`, async t => {
+  t.test(`${mode} Start Enhance dev`, async t => {
     let cwd = newTmpFolder(t, newDevDir)
     let arcFile = join(cwd, 'app.arc')
     writeFileSync(arcFile, arc)

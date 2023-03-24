@@ -17,11 +17,11 @@ async function runTests (runType, t) {
   let mode = `[Update / ${runType}]`
   let begin = _begin[runType].bind({}, t)
 
-  let upgraded = 'Successfully upgraded Begin!'
+  let upgraded = 'Successfully upgraded Enhance!'
   let x64Release = /file-x64.zip/
   let arm64Release = /file-arm64.zip/
   let upgradeVer = /10000\.0\.0/
-  let didNotUpgrade = 'Begin already running the latest version, nice!'
+  let didNotUpgrade = 'Enhance already running the latest version, nice!'
   let contents = 'henlo!\n'
   let failed = /Failed to check latest version/
   let port

@@ -11,7 +11,7 @@ test('Run version tests', async t => {
 async function runTests (runType, t) {
   let mode = `[Version / ${runType}]`
   let begin = _begin[runType].bind({}, t)
-  let fullVer = /^Begin \d+\.\d+\.\d+$/
+  let fullVer = /^Enhance \d+\.\d+\.\d+$/
   let ver = /^\d+\.\d+\.\d+$/
 
   t.test(`${mode} Normal`, async t => {
@@ -40,7 +40,7 @@ async function runTests (runType, t) {
 
     r = await begin('version --json')
     json = JSON.parse(r.stdout)
-    t.ok(json.begin, `Got a value for Begin exe path: ${json.begin}`)
+    t.ok(json.begin, `Got a value for Enhance exe path: ${json.begin}`)
     t.match(json.version, ver, 'Got version')
     t.match(json.message, fullVer, 'Got version message')
     t.notOk(r.stderr, 'Did not print to stderr')
@@ -48,7 +48,7 @@ async function runTests (runType, t) {
 
     r = await begin('ver --json')
     json = JSON.parse(r.stdout)
-    t.ok(json.begin, `Got a value for Begin exe path: ${json.begin}`)
+    t.ok(json.begin, `Got a value for Enhance exe path: ${json.begin}`)
     t.match(json.version, ver, 'Got version')
     t.match(json.message, fullVer, 'Got version message')
     t.notOk(r.stderr, 'Did not print to stderr')
@@ -56,7 +56,7 @@ async function runTests (runType, t) {
 
     r = await begin('v --json')
     json = JSON.parse(r.stdout)
-    t.ok(json.begin, `Got a value for Begin exe path: ${json.begin}`)
+    t.ok(json.begin, `Got a value for Enhance exe path: ${json.begin}`)
     t.match(json.version, ver, 'Got version')
     t.match(json.message, fullVer, 'Got version message')
     t.notOk(r.stderr, 'Did not print to stderr')

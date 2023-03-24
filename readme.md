@@ -1,22 +1,22 @@
-# Begin CLI
+# Enhance CLI
 
 [![GitHub CI status](https://github.com/beginner-corp/cli/workflows/Node%20CI/badge.svg)](https://github.com/beginner-corp/cli/actions?query=workflow%3A%22Node+CI%22)
 
 
 ## Installing
 
-Install the Begin CLI by opening your terminal and entering the following command:
+Install the Enhance CLI by opening your terminal and entering the following command:
 
 - Mac, Linux: `curl -sS https://dl.begin.com/install.sh | sh`
-  - Then follow the printed instructions to add Begin to your `$PATH`.
+  - Then follow the printed instructions to add Enhance to your `$PATH`.
 - Windows: `iwr https://dl.begin.com/install.ps1 -useb | iex`
 
-By default Begin installs to `~/.begin/` (Mac, Linux) / `$Home\.begin\` (Windows). You can specify a custom directory to install to by using the `BEGIN_INSTALL` environment variable:
+By default Enhance installs to `~/.begin/` (Mac, Linux) / `$Home\.begin\` (Windows). You can specify a custom directory to install to by using the `BEGIN_INSTALL` environment variable:
 
 - Mac, Linux: `BEGIN_INSTALL=/whatever/path/here curl -sS https://dl.begin.com/install.sh | sh`
 - Windows: `$env:BEGIN_INSTALL="c:\whatever\path\here"; iwr https://dl.begin.com/install.ps1 -useb | iex`
 
-Alternatively, you can install Begin with npm: `npm i -g @begin/cli`.
+Alternatively, you can install Enhance with npm: `npm i -g @begin/cli`.
 
 ## Running locally
 
@@ -30,7 +30,7 @@ export BEGIN_CLI_CLIENT_ID_PRODUCTION=<your production ID>
 
 ## Usage
 
-> Note for Windows users: `begin` is a reserved word in PowerShell, so in Windows Begin is `b.exe`. Any documented references to running `begin` should be interpreted as running `b` in Windows.
+> Note for Windows users: `begin` is a reserved word in PowerShell, so in Windows Enhance is `b.exe`. Any documented references to running `begin` should be interpreted as running `b` in Windows.
 
 - Run `begin` to see your list of available commands
 - Get help:
@@ -65,7 +65,7 @@ Unsuccessful execution
 
 ## CLI release channels
 
-Begin has two release channels:
+Enhance has two release channels:
 
 - `latest` (default) - well-hardened production releases following [semver](https://semver.org/)
 - `main` - the newest stuff (on the `main` branch, hence the name), not yet released to production
@@ -74,15 +74,15 @@ To install main directly, run:
 - Mac, Linux: `curl -s https://dl.begin.com/install.sh | sh -s main`
 - Windows: `$v="main"; iwr https://dl.begin.com/install.ps1 -useb | iex`
 
-If you already have Begin installed, to switch to `main` from `latest` run: `begin update --use main`.
+If you already have Enhance installed, to switch to `main` from `latest` run: `begin update --use main`.
 
 Similarly, to switch back to `latest` from `main`, run: `begin update --use latest`.
 
 
 ## Tidbits
 
-Wherever possible, the Begin CLI adheres to the [Command Line Interface Guidelines](https://clig.dev/).
+Wherever possible, the Enhance CLI adheres to the [Command Line Interface Guidelines](https://clig.dev/).
 
-Begin is `async/await` / `Promises`-based, and uses `pkg` for binary compilation. It is currently CommonJS, with plans to [eventually refactor to ESM](https://github.com/vercel/pkg/issues/1291).
+Enhance is `async/await` / `Promises`-based, and uses `pkg` for binary compilation. It is currently CommonJS, with plans to [eventually refactor to ESM](https://github.com/vercel/pkg/issues/1291).
 
-Begin is written in idiomatic JavaScript with a key exception: each command's specific `require()` statements are in local scope, not global. This is specifically and deliberately done to [reduce the coldstart time and ensure every execution runs as fast as possible](https://github.com/beginner-corp/cli/discussions/4).
+Enhance is written in idiomatic JavaScript with a key exception: each command's specific `require()` statements are in local scope, not global. This is specifically and deliberately done to [reduce the coldstart time and ensure every execution runs as fast as possible](https://github.com/beginner-corp/cli/discussions/4).

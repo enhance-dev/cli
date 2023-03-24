@@ -1,7 +1,7 @@
 module.exports = {
   en: {
     usage: [ 'update', '[options]' ],
-    description: 'Update Begin to the latest version',
+    description: 'Update Enhance to the latest version',
     contents: {
       header: 'Update options',
       items: [

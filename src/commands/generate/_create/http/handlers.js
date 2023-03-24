@@ -1,6 +1,6 @@
 let copy = {
   en: {
-    hello: 'Hello, Beginner!',
+    hello: 'Hello, Enhancener!',
     get_started: 'Get started by editing this file at:',
     view_docs: 'View documentation at:',
   }
@@ -13,7 +13,7 @@ function html (lang, handlerFile) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Begin app!</title>
+  <title>Enhance app!</title>
   <style>
     * { box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; } max-width-320 { max-width: 20rem; } margin-left-8 { margin-left: 0.5rem; } margin-bottom-16 { margin-bottom: 1rem; } margin-bottom-8 { margin-bottom: 0.5rem; } padding-32 { padding: 2rem; } color-grey { color: #333; } color-black-link:hover { color: black; }
   </style>

@@ -8,7 +8,7 @@ module.exports = {
     return {
       en: {
         usage: [ 'new', '[folder] [options]' ],
-        description: 'Initialize a new Begin project',
+        description: 'Initialize a new Enhance project',
         contents: {
           header: 'New project parameters',
           items: [

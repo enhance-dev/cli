@@ -17,7 +17,7 @@ async function runTests (runType, t) {
   let invalidType = /Invalid generator type: foo/
   let generateScaffold = /begin generate scaffold <parameters> \[options\]/
 
-  // `generate` is unusual in Begin commands in that it has subcommands, so test the subcommand help
+  // `generate` is unusual in Enhance commands in that it has subcommands, so test the subcommand help
   t.test(`${mode} generate help`, async t => {
     t.plan(7)
     let r

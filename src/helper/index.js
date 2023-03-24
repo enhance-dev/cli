@@ -49,7 +49,7 @@ module.exports = function helper (params, cmdHelp) {
   }
 
   // Version
-  help += br(2) + c.dim(`Begin version: ${appVersion}`)
+  help += br(2) + c.dim(`Enhance version: ${appVersion}`)
 
   printer(code(help))
 }

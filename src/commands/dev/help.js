@@ -1,7 +1,7 @@
 module.exports = {
   en: {
     usage: [ 'dev', '[options]' ],
-    description: 'Start the Begin local development server',
+    description: 'Start the Enhance local development server',
     contents: {
       header: 'Dev server options',
       items: [
@@ -29,7 +29,7 @@ module.exports = {
     },
     examples: [
       {
-        name: 'Start the Begin dev server',
+        name: 'Start the Enhance dev server',
         example: 'begin dev',
       },
       {

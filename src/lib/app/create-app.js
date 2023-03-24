@@ -9,11 +9,11 @@ module.exports = async function createApp (params, utils) {
   let { promptOptions } = require('.')
   let { validateEnvName } = require('./validate')
 
-  console.error(`This project doesn't appear to be associated with a Begin app`)
+  console.error(`This project doesn't appear to be associated with a Enhance app`)
   let { create } = await prompt({
     type: 'confirm',
     name: 'create',
-    message: `Would you like to create a Begin app based on this project?`,
+    message: `Would you like to create a Enhance app based on this project?`,
     initial: 'y',
   }, promptOptions)
   if (!create) {

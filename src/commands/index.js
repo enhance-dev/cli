@@ -1,24 +1,11 @@
-let builds = require('./builds')
-let create = require('./create')
-let deploy = require('./deploy')
-let destroy = require('./destroy')
 let dev = require('./dev')
-let domains = require('./domains')
-let envVar = require('./env')
-let logs = require('./logs')
 let generate = require('./generate')
 let help = require('./help')
-let list = require('./list')
-let login = require('./login')
-let logout = require('./logout')
 let newProj = require('./new')
-let tail = require('./tail')
-let telemetry = require('./telemetry')
 let update = require('./update')
 let version = require('./version')
 let commands = [
-  builds, create, deploy, destroy, dev, domains, envVar, generate, help,
-  list, login, logout, logs, newProj, tail, telemetry, update, version,
+  dev, generate, help, newProj, update, version
 ]
 
 let helper = require('../helper')

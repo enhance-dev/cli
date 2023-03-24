@@ -39,7 +39,7 @@ async function action (params) {
     if (!override && channel === 'main') doNotUpdate = appVersion === version
     if (!override && channel === 'latest') doNotUpdate = semver.gte(appVersion, version)
     if (doNotUpdate) {
-      return resolve('Begin already running the latest version, nice!')
+      return resolve('Enhance already running the latest version, nice!')
     }
 
     https.get(url, res => {
@@ -87,9 +87,9 @@ async function action (params) {
           if (!isWin) {
             chmodSync(filename, exe)
           }
-          console.error(`Upgrading Begin to ${version}`)
+          console.error(`Upgrading Enhance to ${version}`)
           console.error(`Updated ${filename}`)
-          resolve('Successfully upgraded Begin!')
+          resolve('Successfully upgraded Enhance!')
         }
       })
       res.on('err', err => {

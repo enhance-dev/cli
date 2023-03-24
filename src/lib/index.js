@@ -3,13 +3,13 @@ let backtickify = a => a.map(s => '`' + s + '`').join(', ')
 function checkManifest (inventory) {
   let c = require('picocolors')
   if (!inventory.inv._project.manifest) {
-    let message = `No Begin project found! To create one, run: ${c.white(c.bold('begin new project'))}`
+    let message = `No Enhance project found! To create one, run: ${c.white(c.bold('begin new project'))}`
     return Error(message)
   }
   let { parse } = require('path')
   let { base, ext } = parse(inventory.inv._project.manifest)
   if (base !== '.arc' && ext !== '.arc') {
-    let message = `Begin CLI only supports app.arc and .arc project manifests`
+    let message = `Enhance CLI only supports app.arc and .arc project manifests`
     return Error(message)
   }
 }
@@ -22,13 +22,13 @@ function getAppID (inventory) {
 }
 
 let config
-// Get Begin API creds and related config
+// Get Enhance API creds and related config
 function getConfig (params, print = true) {
   if (config && !params._refresh) return config
 
   function done (via) {
-    if (print && config.stagingAPI) printer(`Begin staging enabled`)
-    if (print && config.access_token) printer.debug(`Using Begin token via ${via}`)
+    if (print && config.stagingAPI) printer(`Enhance staging enabled`)
+    if (print && config.access_token) printer.debug(`Using Enhance token via ${via}`)
     return config
   }
 

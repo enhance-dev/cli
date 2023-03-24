@@ -119,7 +119,7 @@ async function send (params) {
       }
     }
 
-    printer.debug(`Transmitting ${sending.length} telemetry events to Begin`)
+    printer.debug(`Transmitting ${sending.length} telemetry events to Enhance`)
 
     let tiny = require('tiny-json-http')
     await tiny.post({ url: base + '/telemetry', headers, body })

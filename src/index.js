@@ -7,7 +7,7 @@ let commands = require('./commands')
 let _printer = require('./printer')
 let telemetry = require('./lib/telemetry')
 
-async function begin (params = {}) {
+async function enhance (params = {}) {
   let { version } = params
   let alias = {
     debug: 'd',
@@ -44,7 +44,7 @@ async function begin (params = {}) {
 
 // Invoke to start if not running in module (test) mode
 if (require.main === module) {
-  begin()
+  enhance()
 }
 
 // Do this in case we have a running spinner that hid the cursor
@@ -54,4 +54,4 @@ process.on('SIGINT', () => {
   process.exit()
 })
 
-module.exports = begin
+module.exports = enhance

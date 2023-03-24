@@ -15,12 +15,12 @@ async function runTests (runType, t) {
   let errCmd = /ohnoes/
   let globalOptions = /Global options\:/
   let stack = /src[\/\\]{1,2}index.js/
-  let ver = /Begin version: \d+\.\d+\.\d+/
+  let ver = /Enhance version: \d+\.\d+\.\d+/
 
   t.test(`${mode} Normal`, async t => {
     t.plan(36)
     let help = /^begin help/
-    let ver = /Begin version: \d+\.\d+\.\d+/
+    let ver = /Enhance version: \d+\.\d+\.\d+/
     let r
 
     r = await begin('help')

@@ -21,7 +21,7 @@ let help = {
         ],
       },
       {
-        header: 'Manage Begin apps &\nenvironments',
+        header: 'Manage Enhance apps &\nenvironments',
         items: [
           {
             name: 'builds',
@@ -29,48 +29,48 @@ let help = {
           },
           {
             name: 'create',
-            description: 'Create a Begin app or environment',
+            description: 'Create a Enhance app or environment',
           },
           {
             name: 'deploy',
-            description: 'Deploy an app to Begin',
+            description: 'Deploy an app to Enhance',
           },
           {
             name: 'destroy',
-            description: 'Destroy a Begin app or environment',
+            description: 'Destroy a Enhance app or environment',
           },
           {
             name: 'env',
-            description: `List your Begin app's environment variables`,
+            description: `List your Enhance app's environment variables`,
           },
           {
             name: 'list',
-            description: 'List your Begin apps and environments',
+            description: 'List your Enhance apps and environments',
           },
           {
             name: 'login',
-            description: 'Log into Begin',
+            description: 'Log into Enhance',
           },
           {
             name: 'logout',
-            description: 'Log out of Begin',
+            description: 'Log out of Enhance',
           },
           {
             name: 'logs',
-            description: 'Retrieve logs from Begin',
+            description: 'Retrieve logs from Enhance',
           },
           {
             name: 'tail',
-            description: 'Tail logs from Begin',
+            description: 'Tail logs from Enhance',
           },
         ],
       },
       {
-        header: 'Manage your Begin account domains',
+        header: 'Manage your Enhance account domains',
         items: [
           {
             name: 'domains',
-            description: 'List your Begin account domain names',
+            description: 'List your Enhance account domain names',
           },
         ],
       },
@@ -87,7 +87,7 @@ let help = {
           },
           {
             name: 'update',
-            description: 'Update Begin to the latest version',
+            description: 'Update Enhance to the latest version',
           },
           {
             name: 'version',
@@ -98,11 +98,11 @@ let help = {
     ],
     examples: [
       {
-        name: 'Get general Begin help',
+        name: 'Get general Enhance help',
         example: 'begin help',
       },
       {
-        name: 'Get help for a Begin command (`generate`)',
+        name: 'Get help for a Enhance command (`generate`)',
         example: 'begin help generate',
       },
     ],
