@@ -19,7 +19,7 @@ module.exports = function helper (params, cmdHelp) {
 
   // Command header
   // First array string is bold, everything else is normal
-  let help = br(1) + `${c.white(c.bold('begin ' + usage[0]))} ${usage[1] ? usage[1] : ''}`
+  let help = br(1) + `${c.white(c.bold('enhance ' + usage[0]))} ${usage[1] ? usage[1] : ''}`
   if (description) {
     help += br(1) + indent + description
   }

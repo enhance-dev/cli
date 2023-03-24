@@ -91,7 +91,7 @@ function addElement ({ tokens, path, name }) {
 module.exports = async function createPage (params, args) {
   let { lang } = params
   let { path, runtime, writeFile } = args
-  let addItem = require('../add-begin-item')
+  let addItem = require('../add-enhance-item')
 
   if (runtime !== 'html') {
     let esprima = require('esprima')

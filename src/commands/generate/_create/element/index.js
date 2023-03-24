@@ -1,7 +1,7 @@
 module.exports = async function createElement (params, args) {
   let { lang } = params
   let { name, runtime } = args
-  let addItem = require('../add-begin-item')
+  let addItem = require('../add-enhance-item')
 
   let handlers = require('./handlers')
 

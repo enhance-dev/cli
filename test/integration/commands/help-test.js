@@ -1,7 +1,7 @@
 let test = require('tape')
 let { join } = require('path')
 let lib = join(process.cwd(), 'test', 'lib')
-let { begin: _begin, run } = require(lib)
+let { enhance: _enhance, run } = require(lib)
 
 test('Run help tests', async t => {
   await run(runTests, t)
@@ -10,7 +10,7 @@ test('Run help tests', async t => {
 
 async function runTests (runType, t) {
   let mode = `[Help / ${runType}]`
-  let begin = _begin[runType].bind({}, t)
+  let enhance = _enhance[runType].bind({}, t)
 
   let errCmd = /ohnoes/
   let globalOptions = /Global options\:/
@@ -19,61 +19,61 @@ async function runTests (runType, t) {
 
   t.test(`${mode} Normal`, async t => {
     t.plan(36)
-    let help = /^begin help/
+    let help = /^enhance help/
     let ver = /Enhance version: \d+\.\d+\.\d+/
     let r
 
-    r = await begin('help')
+    r = await enhance('help')
     t.match(r.stdout, help, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('--help')
+    r = await enhance('--help')
     t.match(r.stdout, help, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('-h')
+    r = await enhance('-h')
     t.match(r.stdout, help, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
     // Order: subcommand before help
-    r = await begin('new help')
+    r = await enhance('new help')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('new --help')
+    r = await enhance('new --help')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('new -h')
+    r = await enhance('new -h')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
     // Order: help before subcommand
-    r = await begin('help new')
+    r = await enhance('help new')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('--help new')
+    r = await enhance('--help new')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 0, 'Exited 0')
 
-    r = await begin('-h new')
+    r = await enhance('-h new')
     t.match(r.stdout, globalOptions, 'Got help')
     t.match(r.stdout, ver, 'Got version (non-truncated help)')
     t.notOk(r.stderr, 'Did not print to stderr')
@@ -85,14 +85,14 @@ async function runTests (runType, t) {
     let r
 
     // Unknown command
-    r = await begin('ohnoes')
+    r = await enhance('ohnoes')
     t.match(r.stderr, globalOptions, 'Got help for unknown command')
     t.match(r.stderr, ver, 'Got version (non-truncated help)')
     t.doesNotMatch(r.stderr, stack, 'Did not get stack trace in debug mode')
     t.notOk(r.stdout, 'Did not print to stdout')
     t.equal(r.code, 1, 'Exited 1')
 
-    r = await begin('ohnoes --debug')
+    r = await enhance('ohnoes --debug')
     t.match(r.stderr, globalOptions, 'Got help for unknown command')
     t.match(r.stderr, ver, 'Got version (non-truncated help)')
     t.match(r.stderr, stack, 'Got stack trace in debug mode')
@@ -104,7 +104,7 @@ async function runTests (runType, t) {
     t.plan(4)
     let r, json
 
-    r = await begin('help --json')
+    r = await enhance('help --json')
     json = JSON.parse(r.stdout)
     t.equal(json.ok, true, 'Got ok: true for help')
     t.ok(json.message, 'Got message for help')
@@ -116,14 +116,14 @@ async function runTests (runType, t) {
     t.plan(8)
     let r, json
 
-    r = await begin('ohnoes --json')
+    r = await enhance('ohnoes --json')
     json = JSON.parse(r.stdout)
     t.match(json.error, errCmd, 'Got error for unknown command')
     t.notOk(json.stack, 'Did not get stack trace in !debug mode')
     t.notOk(r.stderr, 'Did not print to stderr')
     t.equal(r.code, 1, 'Exited 1')
 
-    r = await begin('ohnoes --json --debug')
+    r = await enhance('ohnoes --json --debug')
     json = JSON.parse(r.stdout)
     t.match(json.error, errCmd, 'Got error for unknown command')
     t.match(json.stack, stack, 'Got stack trace in debug mode')

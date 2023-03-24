@@ -1,7 +1,7 @@
 module.exports = async function createApi (params, args) {
   let { lang } = params
   let { path, runtime } = args
-  let addItem = require('../add-begin-item')
+  let addItem = require('../add-enhance-item')
 
   let handlers = require('./handlers')
 

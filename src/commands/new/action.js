@@ -38,7 +38,7 @@ module.exports = async function (params) {
   }
 
   // App name (optional)
-  let appName = args.name || args.n ? args.name || args.n  : 'begin-app'
+  let appName = args.name || args.n ? args.name || args.n  : 'enhance-app'
   if (!looseName.test(appName)) {
     return error('invalid_appname')
   }
@@ -52,7 +52,7 @@ module.exports = async function (params) {
   // Tweak settings for new project
   packageJson.name = appName
   packageJson.version = '0.0.1'
-  packageJson.scripts.start = 'begin dev'
+  packageJson.scripts.start = 'enhance dev'
   delete packageJson.devDependencies['@architect/sandbox']
 
   let p = file => join(projectPath, file)
@@ -93,5 +93,5 @@ module.exports = async function (params) {
 
   // Success message
   let cdPath = path === '.' ? '' : `cd ${path} && `
-  console.error(`Project ${appName} successfully created! To get started run: ${c.bold(c.green(`${cdPath}begin dev`))}`)
+  console.error(`Project ${appName} successfully created! To get started run: ${c.bold(c.green(`${cdPath}enhance dev`))}`)
 }

@@ -2,7 +2,7 @@ let test = require('tape')
 let { existsSync } = require('fs')
 let { join } = require('path')
 let lib = join(process.cwd(), 'test', 'lib')
-let { begin: _begin, defaultNumberOfLambdas, getInv, newTmpFolder, run } = require(lib)
+let { enhance: _enhance, defaultNumberOfLambdas, getInv, newTmpFolder, run } = require(lib)
 
 test('Run new tests', async t => {
   await run(runTests, t)
@@ -11,7 +11,7 @@ test('Run new tests', async t => {
 
 async function runTests (runType, t) {
   let mode = `[New / ${runType}]`
-  let begin = _begin[runType].bind({}, t)
+  let enhance = _enhance[runType].bind({}, t)
 
   let newAppDir = 'new'
   let appFound = /Existing Enhance app already found in this directory/
@@ -21,7 +21,7 @@ async function runTests (runType, t) {
     let cwd, i, lambda, r
 
     cwd = newTmpFolder(t, newAppDir)
-    r = await begin('new', cwd)
+    r = await enhance('new', cwd)
     i = await getInv(t, cwd)
     t.pass('Project is valid')
     t.equal(i.inv._project.manifest, join(cwd, '.arc'), 'Wrote manifest to folder')
@@ -40,7 +40,7 @@ async function runTests (runType, t) {
 
     cwd = newTmpFolder(t, newAppDir, { copy: 'lolidk' })
     dest = join(cwd, 'lolidk')
-    r = await begin('new lolidk', cwd)
+    r = await enhance('new lolidk', cwd)
     i = await getInv(t, dest)
     t.pass('Project is valid')
     t.equal(i.inv._project.manifest, join(dest, '.arc'), 'Wrote manifest to folder')
@@ -58,7 +58,7 @@ async function runTests (runType, t) {
     let cwd, i, lambda, r
 
     cwd = newTmpFolder(t, newAppDir)
-    r = await begin('new --name test-app', cwd)
+    r = await enhance('new --name test-app', cwd)
     i = await getInv(t, cwd)
     t.pass('Project is valid')
     t.equal(i.inv._project.manifest, join(cwd, '.arc'), 'Wrote manifest to folder')
@@ -78,11 +78,11 @@ async function runTests (runType, t) {
 
     cwd = newTmpFolder(t, newAppDir)
     // Create a fresh project
-    r = await begin('new', cwd)
+    r = await enhance('new', cwd)
     await getInv(t, cwd)
     t.pass('Project is valid')
     // Now error
-    r = await begin('new', cwd)
+    r = await enhance('new', cwd)
     t.notOk(r.stdout, 'Did not print to stdout')
     t.match(r.stderr, appFound, 'Errored upon finding existing app in cwd')
     t.equal(r.code, 1, 'Exited 1')
@@ -93,7 +93,7 @@ async function runTests (runType, t) {
     let cwd, i, json, lambda, r
 
     cwd = newTmpFolder(t, newAppDir)
-    r = await begin('new --json', cwd)
+    r = await enhance('new --json', cwd)
     i = await getInv(t, cwd)
     t.pass('Project is valid')
     json = JSON.parse(r.stdout)
@@ -113,11 +113,11 @@ async function runTests (runType, t) {
 
     cwd = newTmpFolder(t, newAppDir)
     // Create a fresh project
-    r = await begin('new', cwd)
+    r = await enhance('new', cwd)
     await getInv(t, cwd)
     t.pass('Project is valid')
     // Now error
-    r = await begin('new --json', cwd)
+    r = await enhance('new --json', cwd)
     json = JSON.parse(r.stdout)
     t.equal(json.ok, false, 'Got ok: false')
     t.match(json.error, appFound, 'Errored upon finding existing app in cwd')

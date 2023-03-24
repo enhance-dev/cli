@@ -2,7 +2,7 @@ let test = require('tape')
 let { join } = require('path')
 let tiny = require('tiny-json-http')
 let lib = join(process.cwd(), 'test', 'lib')
-let { begin: _begin, newTmpFolder, run, start, shutdown } = require(lib)
+let { enhance: _enhance, newTmpFolder, run, start, shutdown } = require(lib)
 
 test('Run new tests (slow)', async t => {
   await run(runTests, t)
@@ -11,7 +11,7 @@ test('Run new tests (slow)', async t => {
 
 async function runTests (runType, t) {
   let mode = `[New / ${runType} (slow)]`
-  let begin = _begin[runType].bind({}, t)
+  let enhance = _enhance[runType].bind({}, t)
 
   let newAppDir = 'new'
   let installing = /Installing dependencies/
@@ -22,7 +22,7 @@ async function runTests (runType, t) {
     t.plan(3)
     process.env.__SLOW__ = true
     cwd = newTmpFolder(t, newAppDir)
-    let r = await begin('new', cwd)
+    let r = await enhance('new', cwd)
     t.notOk(r.stdout, 'Did not print to stdout')
     t.match(r.stderr, installing, 'Printed dep installation message to stderr')
     t.equal(r.code, 0, 'Exited 0')

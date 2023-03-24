@@ -30,11 +30,11 @@ module.exports = {
     examples: [
       {
         name: 'Start the Enhance dev server',
-        example: 'begin dev',
+        example: 'enhance dev',
       },
       {
         name: 'Start the dev server on port 6666',
-        example: 'begin dev --port 6666',
+        example: 'enhance dev --port 6666',
       },
     ],
   }

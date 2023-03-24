@@ -21,7 +21,7 @@ test('Run help by default', async t => {
   t.plan(1)
   let args = getArgs('')
   await commands({ args, lang, printer })
-  t.ok(printed[0].includes('begin help'), 'Ran help')
+  t.ok(printed[0].includes('enhance help'), 'Ran help')
   t.teardown(reset)
 })
 
@@ -29,7 +29,7 @@ test('Run a simple command (help)', async t => {
   t.plan(1)
   let args = getArgs('help')
   await commands({ args, lang, printer })
-  t.ok(printed[0].includes('begin help'), 'Ran help')
+  t.ok(printed[0].includes('enhance help'), 'Ran help')
   t.teardown(reset)
 })
 
@@ -54,7 +54,7 @@ test('Show help on a known command', async t => {
   t.plan(1)
   let args = getArgs('help update')
   await commands({ args, lang, printer })
-  t.ok(printed[0].includes('begin update'), 'Ran help')
+  t.ok(printed[0].includes('enhance update'), 'Ran help')
   t.teardown(reset)
 })
 
@@ -62,7 +62,7 @@ test('Show help on a known subcommand', async t => {
   t.plan(1)
   let args = getArgs('new help')
   await commands({ args, lang, printer })
-  t.ok(printed[0].includes('begin new'), 'Ran help')
+  t.ok(printed[0].includes('enhance new'), 'Ran help')
   t.teardown(reset)
 })
 
@@ -73,7 +73,7 @@ test('Show help on an unknown command', async t => {
   await commands({ args, lang, printer })
   t.ok(printed[0] instanceof Error, 'Printed an error')
   t.ok(printed[0].message.includes(bad), 'Got error about unknown command')
-  t.ok(printed[1].includes('begin help'), 'Got begin help')
+  t.ok(printed[1].includes('enhance help'), 'Got enhance help')
   t.teardown(reset)
 })
 
@@ -82,7 +82,7 @@ test('Show command help on an invalid subcommand', async t => {
   let args = getArgs('generate')
   await commands({ args, lang, printer })
   t.ok(printed[0] instanceof Error, 'Printed an error')
-  t.ok(printed[1].includes('begin generate'), 'Got command help')
+  t.ok(printed[1].includes('enhance generate'), 'Got command help')
   t.teardown(reset)
 })
 

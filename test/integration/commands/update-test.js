@@ -5,7 +5,7 @@ let { join } = require('path')
 let cwd = process.cwd()
 let lib = join(cwd, 'test', 'lib')
 let mock = join(cwd, 'test', 'mock')
-let { begin: _begin, newTmpFolder, run, start, shutdown } = require(lib)
+let { enhance: _enhance, newTmpFolder, run, start, shutdown } = require(lib)
 let filePath = folder => join(folder, 'hi.txt')
 
 test('Run update tests', async t => {
@@ -15,7 +15,7 @@ test('Run update tests', async t => {
 
 async function runTests (runType, t) {
   let mode = `[Update / ${runType}]`
-  let begin = _begin[runType].bind({}, t)
+  let enhance = _enhance[runType].bind({}, t)
 
   let upgraded = 'Successfully upgraded Enhance!'
   let x64Release = /file-x64.zip/
@@ -37,9 +37,9 @@ async function runTests (runType, t) {
 
       folder = newTmpFolder(t, 'install')
       path = filePath(folder)
-      process.env.BEGIN_INSTALL = folder
-      process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
-      r = await begin('update')
+      process.env.enhance_INSTALL = folder
+      process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
+      r = await enhance('update')
       if (!existsSync(path)) t.fail(`Did not find unzipped / installed file at ${path}`)
       file = await readFile(path)
       await isExecutable(t, path)
@@ -52,9 +52,9 @@ async function runTests (runType, t) {
 
       folder = newTmpFolder(t, 'install')
       path = filePath(folder)
-      process.env.BEGIN_INSTALL = folder
-      process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-ok`
-      r = await begin('update')
+      process.env.enhance_INSTALL = folder
+      process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-ok`
+      r = await enhance('update')
       if (existsSync(path)) t.fail(`Found unzipped / installed file at ${path}`)
       t.equal(r.stdout, didNotUpgrade, `Got confirmation that upgrade wasn't necessary`)
       t.ok(r.stderr, 'Printed update info stderr')
@@ -69,9 +69,9 @@ async function runTests (runType, t) {
 
       folder = newTmpFolder(t, 'install')
       path = filePath(folder)
-      process.env.BEGIN_INSTALL = folder
-      process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
-      r = await begin('update')
+      process.env.enhance_INSTALL = folder
+      process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
+      r = await enhance('update')
       if (!existsSync(path)) t.fail(`Did not find unzipped / installed file at ${path}`)
       file = await readFile(path)
       await isExecutable(t, path)
@@ -84,9 +84,9 @@ async function runTests (runType, t) {
 
       folder = newTmpFolder(t, 'install')
       path = filePath(folder)
-      process.env.BEGIN_INSTALL = folder
-      process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-ok`
-      r = await begin('update')
+      process.env.enhance_INSTALL = folder
+      process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-ok`
+      r = await enhance('update')
       if (existsSync(path)) t.fail(`Found unzipped / installed file at ${path}`)
       t.equal(r.stdout, didNotUpgrade, `Got confirmation that upgrade wasn't necessary`)
       t.ok(r.stderr, 'Printed update info stderr')
@@ -100,9 +100,9 @@ async function runTests (runType, t) {
 
     folder = newTmpFolder(t, 'install')
     path = filePath(folder)
-    process.env.BEGIN_INSTALL = folder
-    process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/lolidk`
-    r = await begin('update')
+    process.env.enhance_INSTALL = folder
+    process.env.__enhance_TEST_URL__ = `http://localhost:${port}/lolidk`
+    r = await enhance('update')
     if (existsSync(path)) t.fail(`Found unzipped / installed file at ${path}`)
     t.notOk(r.stdout, 'Did not print to stdout')
     t.ok(r.stderr, 'Printed error to stderr')
@@ -115,9 +115,9 @@ async function runTests (runType, t) {
 
     folder = newTmpFolder(t, 'install')
     path = filePath(folder)
-    process.env.BEGIN_INSTALL = folder
-    process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
-    r = await begin('update --json')
+    process.env.enhance_INSTALL = folder
+    process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-upgrade`
+    r = await enhance('update --json')
     if (!existsSync(path)) t.fail(`Did not find unzipped / installed file at ${path}`)
     file = await readFile(path)
     json = JSON.parse(r.stdout)
@@ -131,9 +131,9 @@ async function runTests (runType, t) {
 
     folder = newTmpFolder(t, 'install')
     path = filePath(folder)
-    process.env.BEGIN_INSTALL = folder
-    process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/versions-ok`
-    r = await begin('update --json')
+    process.env.enhance_INSTALL = folder
+    process.env.__enhance_TEST_URL__ = `http://localhost:${port}/versions-ok`
+    r = await enhance('update --json')
     if (existsSync(path)) t.fail(`Found unzipped / installed file at ${path}`)
     json = JSON.parse(r.stdout)
     t.equal(json.ok, true, 'Got ok: true for upgrade confirmation')
@@ -148,8 +148,8 @@ async function runTests (runType, t) {
     t.plan(4)
     let json, r
 
-    process.env.__BEGIN_TEST_URL__ = `http://localhost:${port}/lolidk`
-    r = await begin('update --json')
+    process.env.__enhance_TEST_URL__ = `http://localhost:${port}/lolidk`
+    r = await enhance('update --json')
     json = JSON.parse(r.stdout)
     t.equal(json.ok, false, 'Got ok: false')
     t.match(json.error, failed, 'Errored on upgrade')
@@ -160,8 +160,8 @@ async function runTests (runType, t) {
   t.test(`${mode} Shut down dev server`, t => {
     shutdown(t)
     process.exitCode = 0
-    delete process.env.BEGIN_INSTALL
-    delete process.env.__BEGIN_TEST_URL__
+    delete process.env.enhance_INSTALL
+    delete process.env.__enhance_TEST_URL__
   })
 }
 

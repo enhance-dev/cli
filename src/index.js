@@ -31,7 +31,7 @@ async function enhance (params = {}) {
 
     let lang = 'en' // This should / will be configurable
     let printer = _printer(args)
-    let cliDir = process.env.BEGIN_INSTALL || join(homedir(), '.begin')
+    let cliDir = process.env.BEGIN_INSTALL || join(homedir(), '.enhance')
     let isCI = args.input === false || (process.env.CI || !process.stdout.isTTY) || false
     let params = { args, appVersion: version, cliDir, clientIDs, isCI, lang, printer }
     await commands(params)

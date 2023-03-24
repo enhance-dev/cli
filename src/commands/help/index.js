@@ -99,11 +99,11 @@ let help = {
     examples: [
       {
         name: 'Get general Enhance help',
-        example: 'begin help',
+        example: 'enhance help',
       },
       {
         name: 'Get help for a Enhance command (`generate`)',
-        example: 'begin help generate',
+        example: 'enhance help generate',
       },
     ],
   }

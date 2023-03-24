@@ -5,7 +5,7 @@ module.exports = {
     return {
       string: message,
       json: {
-        begin: process.argv[0],
+        enhance: process.argv[0],
         version: appVersion,
         message,
       }

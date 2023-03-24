@@ -10,7 +10,7 @@ function commands (p) {
   params = p
   if (error) throw error
 }
-let begin = proxyquire(sut, {
+let enhance = proxyquire(sut, {
   './commands': commands
 })
 
@@ -27,7 +27,7 @@ function reset () {
 
 test('Set up env', t => {
   t.plan(1)
-  t.ok(begin, 'Enhance entry is present')
+  t.ok(enhance, 'Enhance entry is present')
 })
 
 test('Args', async t => {
@@ -35,7 +35,7 @@ test('Args', async t => {
   async function run (flags) {
     reset()
     args(flags)
-    await begin()
+    await enhance()
   }
 
   await run('-d')
@@ -68,11 +68,11 @@ test('Version', async t => {
   t.plan(2)
   reset()
   let version = 'henlo'
-  await begin({ version })
+  await enhance({ version })
   t.equal(params.appVersion, version, `Passed through app version: ${version}`)
 
   reset()
-  await begin()
+  await enhance()
   t.ok(params.appVersion && (params.appVersion !== version), `Got a default app version: ${params.appVersion}`)
 })
 
@@ -82,7 +82,7 @@ test('Print error if something blows up', async t => {
   error = Error(msg)
 
   capture.start()
-  await begin()
+  await enhance()
   capture.stop()
   t.ok(capture.stderr.includes(msg), `Errored at top level: ${capture.stderr}`)
 
