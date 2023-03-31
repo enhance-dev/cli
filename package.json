@@ -1,5 +1,5 @@
 {
-  "name": "@enhance/cli",
+  "name": "simon-enhance-cli",
   "version": "0.0.1",
   "bin": {
     "enhance": "src/index.js"
