@@ -2,10 +2,9 @@ let dev = require('./dev')
 let generate = require('./generate')
 let help = require('./help')
 let newProj = require('./new')
-let update = require('./update')
 let version = require('./version')
 let commands = [
-  dev, generate, help, newProj, update, version
+  dev, generate, help, newProj, version
 ]
 
 let helper = require('../helper')

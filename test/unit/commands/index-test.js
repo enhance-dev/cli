@@ -52,9 +52,9 @@ test('Run a command alias (version: ver)', async t => {
 
 test('Show help on a known command', async t => {
   t.plan(1)
-  let args = getArgs('help update')
+  let args = getArgs('help new')
   await commands({ args, lang, printer })
-  t.ok(printed[0].includes('enhance update'), 'Ran help')
+  t.ok(printed[0].includes('enhance new'), 'Ran help')
   t.teardown(reset)
 })
 
