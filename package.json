@@ -1,6 +1,6 @@
 {
   "name": "simon-enhance-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": {
     "enhance": "src/index.js"
   },
