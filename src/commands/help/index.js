@@ -28,10 +28,6 @@ let help = {
             description: 'Display help',
           },
           {
-            name: 'update',
-            description: 'Update Enhance to the latest version',
-          },
-          {
             name: 'version',
             description: 'Output app version',
           },
