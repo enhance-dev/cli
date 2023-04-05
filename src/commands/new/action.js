@@ -1,18 +1,11 @@
-
-function shortenPath (filePath) {
-  let { sep } = require('path')
-  let packageName = `@enhance${sep}starter-project${sep}`
-  return filePath.substring(filePath.lastIndexOf(packageName) + packageName.length)
-}
-
 module.exports = async function (params) {
-  let { existsSync, mkdirSync, readFileSync } = require('fs')
-  let { isAbsolute, join, normalize, sep } = require('path')
+  let { existsSync, writeFileSync } = require('fs')
+  let { isAbsolute, join, normalize } = require('path')
+  let { createProject } = await import('@enhance/create/create-project.js')
 
   let { args } = params
   let utils = require('../../lib')
   let { npmCommands: { initialInstall } } = utils
-  let writeFile = utils.writeFile(params)
   let error = require('./errors')(params, utils)
   let _inventory = require('@architect/inventory')
   let c = require('picocolors')
@@ -24,17 +17,13 @@ module.exports = async function (params) {
     return error('no_path')
   }
 
-  let projectPath = isAbsolute(path) ? path : normalize(join(process.cwd(), path))
+  let dest = isAbsolute(path) ? path : normalize(join(process.cwd(), path))
 
   // Error out if folder already exists and it has an arc project already
-  if (existsSync(projectPath)) {
-    let inventory = await _inventory({ cwd: projectPath })
+  if (existsSync(dest)) {
+    let inventory = await _inventory({ cwd: dest })
     let invalid = inventory.inv._project.manifest
     if (invalid) return error('project_found')
-  }
-  // Create new project folder
-  else {
-    mkdirSync(projectPath, { recursive: true })
   }
 
   // App name (optional)
@@ -43,53 +32,25 @@ module.exports = async function (params) {
     return error('invalid_appname')
   }
 
-  let nodeModules = join(__dirname, '..', '..', '..', 'node_modules')
+  try {
+    createProject({ path, dest, name: appName })
+  }
+  catch (err) {
+    return error('project_found')
+  }
 
-  // Read package.json from starter project
-  let packagePath = join(nodeModules, '@enhance', 'starter-project', 'package.json')
-  let packageJson = JSON.parse(readFileSync(packagePath))
+  const pkgFile = require(join(dest, 'package.json'))
+  pkgFile.scripts.start = 'enhance dev'
+  delete pkgFile.devDependencies['@architect/sandbox']
+  pkgFile.devDependencies['simon-enhance-cli'] = 'latest'
 
-  // Tweak settings for new project
-  packageJson.name = appName
-  packageJson.version = '0.0.1'
-  packageJson.scripts.start = 'enhance dev'
-  delete packageJson.devDependencies['@architect/sandbox']
-
-  let p = file => join(projectPath, file)
-
-  writeFile(p('package.json'), JSON.stringify(packageJson, null, 2))
-
-  // Read .arc file from starter project
-  let arcPath = join(nodeModules, '@enhance', 'starter-project', '.arc')
-  let arc = readFileSync(arcPath).toString().replace('myproj', appName)
-
-  // Write the new Arc project manifest
-  writeFile(p('.arc'), arc)
-
-  // Create starter app folders
-  mkdirSync(p(`app${sep}pages`), { recursive: true })
-  mkdirSync(p('public'), { recursive: true })
-
-  // Starter project files
-  // when you install @enhance/starter-project the manifest.json file is created
-  // so we can read it instead of having to maintain a file list here.
-  let manifestPath = join(nodeModules, '@enhance', 'starter-project', 'manifest.json')
-  let starterProjectManifest = JSON.parse(readFileSync(manifestPath))
-
-  // Create starter files
-  starterProjectManifest.fileList.forEach(file => {
-    let input = join(nodeModules, file)
-    let data = readFileSync(input)
-    writeFile(p(shortenPath(input)), data)
-  })
-
-  // Write .gitignore
-  let gitIgnoreTemplate = join(nodeModules, '@enhance', 'starter-project', 'template.gitignore')
-  let gitIgnore = readFileSync(gitIgnoreTemplate)
-  writeFile(p('.gitignore'), gitIgnore)
+  writeFileSync(
+    join(dest, 'package.json'),
+    JSON.stringify(pkgFile, null, 2),
+  )
 
   // Need to install enhance/arc-plugin-enhance or 💥
-  await initialInstall(params, projectPath)
+  await initialInstall(params, dest)
 
   // Success message
   let cdPath = path === '.' ? '' : `cd ${path} && `
