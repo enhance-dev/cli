@@ -40,7 +40,8 @@ module.exports = async function (params) {
   }
 
   const pkgFile = require(join(dest, 'package.json'))
-  pkgFile.scripts.start = 'enhance dev'
+  pkgFile.scripts.enhance = 'enhance'
+  pkgFile.scripts.start = 'npx enhance dev'
   delete pkgFile.devDependencies['@architect/sandbox']
   pkgFile.devDependencies['simon-enhance-cli'] = 'latest'
 
