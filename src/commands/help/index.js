@@ -37,11 +37,11 @@ let help = {
     examples: [
       {
         name: 'Get general Enhance help',
-        example: 'enhance help',
+        example: 'npx enhance help',
       },
       {
         name: 'Get help for a Enhance command (`generate`)',
-        example: 'enhance help generate',
+        example: 'npx enhance help generate',
       },
     ],
   }

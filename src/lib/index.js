@@ -3,7 +3,7 @@ let backtickify = a => a.map(s => '`' + s + '`').join(', ')
 function checkManifest (inventory) {
   let c = require('picocolors')
   if (!inventory.inv._project.manifest) {
-    let message = `No Enhance project found! To create one, run: ${c.white(c.bold('enhance new project'))}`
+    let message = `No Enhance project found! To create one, run: ${c.white(c.bold('npx enhance new project'))}`
     return Error(message)
   }
   let { parse } = require('path')

@@ -24,11 +24,11 @@ module.exports = {
         examples: [
           {
             name: 'Create a new page route',
-            example: 'enhance gen page --path /notes',
+            example: 'npx enhance gen page --path /notes',
           },
           {
             name: 'Create a new page route with path parameter',
-            example: `enhance gen page --path '/notes/$id'`,
+            example: `npx enhance gen page --path '/notes/$id'`,
           }
         ]
       }

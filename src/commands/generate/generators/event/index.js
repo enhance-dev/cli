@@ -19,7 +19,7 @@ module.exports = {
         examples: [
           {
             name: 'Create a new async event',
-            example: 'enhance gen event --name my-event',
+            example: 'npx enhance gen event --name my-event',
           }
         ]
       }

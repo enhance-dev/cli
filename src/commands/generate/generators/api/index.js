@@ -19,11 +19,11 @@ module.exports = {
         examples: [
           {
             name: 'Create a new API route',
-            example: 'enhance gen api --path /notes',
+            example: 'npx enhance gen api --path /notes',
           },
           {
             name: 'Create a new API route with path parameter',
-            example: `enhance gen api --path '/notes/$id'`,
+            example: `npx enhance gen api --path '/notes/$id'`,
           }
         ]
       }

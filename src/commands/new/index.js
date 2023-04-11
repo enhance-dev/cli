@@ -22,15 +22,15 @@ module.exports = {
         examples: [
           {
             name: 'Create a new project in the current folder',
-            example: 'enhance new',
+            example: 'npx enhance new',
           },
           {
             name: 'Create a new project in the ./my-proj folder',
-            example: 'enhance new my-proj',
+            example: 'npx enhance new my-proj',
           },
           {
             name: 'Create a new project with the name my-app',
-            example: 'enhance new project -n my-app',
+            example: 'npx enhance new project -n my-app',
           },
         ]
       },

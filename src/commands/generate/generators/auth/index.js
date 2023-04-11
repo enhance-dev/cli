@@ -23,7 +23,7 @@ module.exports = {
         examples: [
           {
             name: 'Basic Usage',
-            example: 'enhance generate auth',
+            example: 'npx enhance generate auth',
           }
         ]
       },

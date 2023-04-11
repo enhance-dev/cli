@@ -28,15 +28,15 @@ module.exports = {
         examples: [
           {
             name: 'Scaffold a CRUD app',
-            example: 'enhance generate scaffold Books title:string author:string publication_year:integer',
+            example: 'npx enhance generate scaffold Books title:string author:string publication_year:integer',
           },
           {
             name: 'Scaffold a CRUD app with OpenAPI',
-            example: 'enhance generate scaffold Books title:string author:string publication_year:integer --openapi',
+            example: 'npx enhance generate scaffold Books title:string author:string publication_year:integer --openapi',
           },
           {
             name: 'Scaffold a CRUD app from JSON Schema file',
-            example: 'enhance generate scaffold --file person.schema.json',
+            example: 'npx enhance generate scaffold --file person.schema.json',
           }
         ]
       },

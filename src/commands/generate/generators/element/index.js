@@ -19,7 +19,7 @@ module.exports = {
         examples: [
           {
             name: 'Create an element',
-            example: 'enhance gen element --name my-element',
+            example: 'npx enhance gen element --name my-element',
           }
         ]
       }

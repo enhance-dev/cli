@@ -55,5 +55,5 @@ module.exports = async function (params) {
 
   // Success message
   let cdPath = path === '.' ? '' : `cd ${path} && `
-  console.error(`Project ${appName} successfully created! To get started run: ${c.bold(c.green(`${cdPath}enhance dev`))}`)
+  console.error(`Project ${appName} successfully created! To get started run: ${c.bold(c.green(`${cdPath}npx enhance dev`))}`)
 }
