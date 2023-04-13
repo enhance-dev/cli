@@ -28,6 +28,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        registry-url: https://registry.npmjs.org/
 
     - name: Env
       run: |
@@ -49,19 +50,9 @@ jobs:
       env:
         CI: true
 
-    - name: Notify
-      uses: homoluctus/slatify@master
-      if: github.ref == 'refs/heads/main' && failure()
-      with:
-        type: ${{ job.status }}
-        job_name: '*Test*'
-        url: ${{ secrets.SLACK_WEBHOOK }}
-        commit: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-
   # ----- Only git tag testing + release deployment beyond this point ----- #
 
-  # Publish the build to S3
+  # Publish the package to npm
   publish:
     # Setup
     needs: test
@@ -70,7 +61,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, self-hosted ]
+        os: [ ubuntu-latest ]
 
     # Go
     steps:
@@ -81,78 +72,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          registry-url: https://registry.npmjs.org/
 
       - name: Install
         run: npm i
 
-      - name: Publish 'latest' (aka production) build
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: npm run publish
+      # Publish to npm
+      - name: Publish @RC to npm
+        if: contains(github.ref, 'RC')
+        run: npm publish --tag RC --access public
         env:
-          DEPLOY: prod
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BEGIN_CLI_CLIENT_ID_STAGING: ${{ secrets.BEGIN_CLI_CLIENT_ID_STAGING }}
-          BEGIN_CLI_CLIENT_ID_PRODUCTION: ${{ secrets.BEGIN_CLI_CLIENT_ID_PRODUCTION }}
-          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish 'main' (aka canary) build
-        if: github.ref == 'refs/heads/main'
-        run: npm run publish
+      - name: Publish @latest to npm
+        if: contains(github.ref, 'RC') == false #'!contains()'' doesn't work lol
+        run: npm publish --access public
         env:
-          DEPLOY: main
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BEGIN_CLI_CLIENT_ID_STAGING: ${{ secrets.BEGIN_CLI_CLIENT_ID_STAGING }}
-          BEGIN_CLI_CLIENT_ID_PRODUCTION: ${{ secrets.BEGIN_CLI_CLIENT_ID_PRODUCTION }}
-          S3_BUCKET: ${{ secrets.S3_BUCKET }}
-
-  # Deploy to the API + CDN
-  deploy:
-    # Setup
-    needs: publish
-    if: startsWith(github.ref, 'refs/tags/v') ||
-        github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-
-    # Go
-    steps:
-      - name: Check out repo
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install
-        run: npm i aws-sdk
-
-      - name: Deploy 'latest' (aka production) build
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: npm run deploy
-        env:
-          DEPLOY: prod
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          CF_DISTRO: ${{ secrets.CF_DISTRO }}
-          LATEST_API: ${{ secrets.LATEST_API }}
-
-      - name: Deploy 'main' (aka canary) build
-        if: github.ref == 'refs/heads/main'
-        run: npm run deploy
-        env:
-          DEPLOY: main
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          CF_DISTRO: ${{ secrets.CF_DISTRO }}
-          LATEST_API: ${{ secrets.LATEST_API }}
-
-      - name: Notify
-        uses: homoluctus/slatify@master
-        with:
-          type: ${{ job.status }}
-          job_name: '*Deploy*'
-          url: ${{ secrets.SLACK_WEBHOOK }}
-          commit: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
