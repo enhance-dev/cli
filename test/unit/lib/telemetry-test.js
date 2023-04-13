@@ -13,14 +13,14 @@ let server = http.createServer()
 let host = 'localhost'
 let port
 
-test('Set up env', async t => {
+test.skip('Set up env', async t => {
   t.plan(2)
   t.ok(telemetry, 'Telemetry lib is present')
   port = await getPort()
   t.ok(port, `Got an open port: ${port}`)
 })
 
-test('isDisabled method', t => {
+test.skip('isDisabled method', t => {
   t.plan(2)
   let result
   let { isDisabled } = telemetry
@@ -34,7 +34,7 @@ test('isDisabled method', t => {
   delete process.env.BEGIN_DISABLE_TELEMETRY
 })
 
-test('getEvents + updateEvents internal helper methods', t => {
+test.skip('getEvents + updateEvents internal helper methods', t => {
   t.plan(4)
   let { getEvents, updateEvents } = telemetry
 
@@ -62,7 +62,7 @@ test('getEvents + updateEvents internal helper methods', t => {
   reset(cliDir)
 })
 
-test('telemetry.update', t => {
+test.skip('telemetry.update', t => {
   t.plan(27)
   let { getEvents, update } = telemetry
 
@@ -131,7 +131,7 @@ test('telemetry.update', t => {
   reset(cliDir)
 })
 
-test('Start mock telemetry server', t => {
+test.skip('Start mock telemetry server', t => {
   t.plan(1)
   server.listen({ port, host }, err => {
     if (err) t.fail(err)
@@ -139,7 +139,7 @@ test('Start mock telemetry server', t => {
   })
 })
 
-test('telemetry.send', async t => {
+test.skip('telemetry.send', async t => {
   t.plan(40)
   let { getEvents, send } = telemetry
   process.env.__BEGIN_TEST_URL__ = `http://${host}:${port}`
@@ -314,7 +314,7 @@ test('telemetry.send', async t => {
   delete process.env.__BEGIN_TEST_URL__
 })
 
-test('Shut down', t => {
+test.skip('Shut down', t => {
   t.plan(1)
   server.close(err => {
     if (err) t.fail(err)

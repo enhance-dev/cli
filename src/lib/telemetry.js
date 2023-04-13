@@ -159,10 +159,12 @@ function end (params) {
  * Helper methods
  */
 function isDisabled (params) {
+  // eslint-disable-next-line no-unused-vars
   let { args } = params
-  if (args['disable-telemetry']) return true
-  if (process.env.BEGIN_DISABLE_TELEMETRY) return true
-  return false
+  // if (args['disable-telemetry']) return true
+  // if (process.env.BEGIN_DISABLE_TELEMETRY) return true
+  // return false
+  return true
 }
 
 function getEvents (params) {
