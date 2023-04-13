@@ -33,9 +33,9 @@ function printer (args) {
     }
     else if (!args.json && out) {
       // Look for color-disabling env vars, TTY state, flags, etc.
-      let { BEGIN_NO_COLOR, NO_COLOR, TERM } = process.env
+      let { ENHANCE_NO_COLOR, NO_COLOR, TERM } = process.env
       let isTTY = !!(process.stdout.isTTY)
-      let noColor = BEGIN_NO_COLOR || NO_COLOR || !isTTY || TERM === 'dumb' || args['no-color']
+      let noColor = ENHANCE_NO_COLOR || NO_COLOR || !isTTY || TERM === 'dumb' || args['no-color']
       let format = output => noColor ? stripAnsi(output) : output
 
       if (isError) {

@@ -1,43 +1,31 @@
 # Enhance CLI
 
-[![GitHub CI status](https://github.com/beginner-corp/cli/workflows/Node%20CI/badge.svg)](https://github.com/beginner-corp/cli/actions?query=workflow%3A%22Node+CI%22)
+[![GitHub CI status](https://github.com/enhance-dev/cli/workflows/Node%20CI/badge.svg)](https://github.com/enhance-dev/cli/actions?query=workflow%3A%22Node+CI%22)
 
+## Getting started
+
+Create a new Enhance project by running the command:
+
+`npx "@enhance/cli@latest" ./myproject -y`
+
+This will create a new Enhance project which includes the Enhance CLI as a dev dependency.
 
 ## Installing
 
-Install the Enhance CLI by opening your terminal and entering the following command:
+Install the Enhance CLI in an existing Enhance project by opening your terminal and entering the following command:
 
-- Mac, Linux: `curl -sS https://dl.begin.com/install.sh | sh`
-  - Then follow the printed instructions to add Enhance to your `$PATH`.
-- Windows: `iwr https://dl.begin.com/install.ps1 -useb | iex`
+`npm i -g @enhance/cli --save-dev`
 
-By default Enhance installs to `~/.begin/` (Mac, Linux) / `$Home\.begin\` (Windows). You can specify a custom directory to install to by using the `BEGIN_INSTALL` environment variable:
-
-- Mac, Linux: `BEGIN_INSTALL=/whatever/path/here curl -sS https://dl.begin.com/install.sh | sh`
-- Windows: `$env:BEGIN_INSTALL="c:\whatever\path\here"; iwr https://dl.begin.com/install.ps1 -useb | iex`
-
-Alternatively, you can install Enhance with npm: `npm i -g @begin/cli`.
-
-## Running locally
-
-Before running `npm run build` to create a local binary be sure to set the following environment variables:
-
-```
-export DEPLOY=main
-export BEGIN_CLI_CLIENT_ID_STAGING=<your staging ID>
-export BEGIN_CLI_CLIENT_ID_PRODUCTION=<your production ID>
-```
+Alternatively, you can globally install Enhance with npm: `npm i -g @enhance/cli`.
 
 ## Usage
 
-> Note for Windows users: `begin` is a reserved word in PowerShell, so in Windows Enhance is `b.exe`. Any documented references to running `begin` should be interpreted as running `b` in Windows.
-
-- Run `begin` to see your list of available commands
+- Run `npx enhance` to see your list of available commands
 - Get help:
   - Providing no argument (or unknown arguments) will print help; help should never be hard to get!
   - Additionally, providing the argument `help` *anywhere* in your command will *always* display relevant help (like `-h` or `--help` flags); for example:
-    - `begin dev help` is equivalent to `begin help dev` or `begin dev -h`
-- Disable colorized output with the `--no-color` flag, or with the following env vars: `BEGIN_NO_COLOR`, `NO_COLOR`, or by setting `TERM` to `dumb`
+    - `npx enhance dev help` is equivalent to `npx enhance help dev` or `npx enhance dev -h`
+- Disable colorized output with the `--no-color` flag, or with the following env vars: `ENHANCE_NO_COLOR`, `NO_COLOR`, or by setting `TERM` to `dumb`
   - Output is automatically de-colorized in JSON mode (`--json`)
 
 
@@ -63,26 +51,6 @@ Unsuccessful execution
 - `stack` (string): stack trace of the error; only present if `--debug` flag is set
 
 
-## CLI release channels
-
-Enhance has two release channels:
-
-- `latest` (default) - well-hardened production releases following [semver](https://semver.org/)
-- `main` - the newest stuff (on the `main` branch, hence the name), not yet released to production
-
-To install main directly, run:
-- Mac, Linux: `curl -s https://dl.begin.com/install.sh | sh -s main`
-- Windows: `$v="main"; iwr https://dl.begin.com/install.ps1 -useb | iex`
-
-If you already have Enhance installed, to switch to `main` from `latest` run: `begin update --use main`.
-
-Similarly, to switch back to `latest` from `main`, run: `begin update --use latest`.
-
-
 ## Tidbits
 
 Wherever possible, the Enhance CLI adheres to the [Command Line Interface Guidelines](https://clig.dev/).
-
-Enhance is `async/await` / `Promises`-based, and uses `pkg` for binary compilation. It is currently CommonJS, with plans to [eventually refactor to ESM](https://github.com/vercel/pkg/issues/1291).
-
-Enhance is written in idiomatic JavaScript with a key exception: each command's specific `require()` statements are in local scope, not global. This is specifically and deliberately done to [reduce the coldstart time and ensure every execution runs as fast as possible](https://github.com/beginner-corp/cli/discussions/4).

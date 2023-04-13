@@ -202,9 +202,9 @@ test('No color', t => {
   run('normal', {}, color)
   t.equal(stdout, msg, `Printed without color (!isTTY)`)
 
-  process.env.BEGIN_NO_COLOR = true
+  process.env.ENHANCE_NO_COLOR = true
   run('normal', {}, color)
-  t.equal(msg, stdout, `Printed without color (BEGIN_NO_COLOR)`)
+  t.equal(msg, stdout, `Printed without color (ENHANCE_NO_COLOR)`)
 
   process.env.NO_COLOR = true
   run('normal', {}, color)
