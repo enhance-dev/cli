@@ -43,7 +43,7 @@ module.exports = async function (params) {
   pkgFile.scripts.enhance = 'enhance'
   pkgFile.scripts.start = 'npx enhance dev'
   delete pkgFile.devDependencies['@architect/sandbox']
-  pkgFile.devDependencies['simon-enhance-cli'] = 'latest'
+  pkgFile.devDependencies['@enhance/cli'] = 'latest'
 
   writeFileSync(
     join(dest, 'package.json'),

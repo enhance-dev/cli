@@ -2,8 +2,7 @@ module.exports = async function action (params, utils, command) {
   let { createJsonSchema,  existsJsonSchema, readSchemaFile, writeJsonSchema } = require('./jsonschema')
   let { writeOpenAPI } = require('./openapi')
   let { createModelName } = require('./model-utils')
-  let { writeFile, npmCommands, validate } = utils
-  let { installAwsSdk } = npmCommands
+  let { writeFile, validate } = utils
   let { args } = params
   let error = require('./errors')(params)
   let input = args._.slice(2)
@@ -51,9 +50,6 @@ module.exports = async function action (params, utils, command) {
     }
     manifest.dependencies.push('@enhance/arc-plugin-openapi')
   }
-
-  // Install dependencies
-  await installAwsSdk(params)
 
   // Step 3: Run the generic generator
   await generate(params, {

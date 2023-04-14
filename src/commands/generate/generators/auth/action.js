@@ -1,7 +1,6 @@
 module.exports = async function action (params, utils, command) {
   let { args } = params
-  let { writeFile, npmCommands, validate } = utils
-  let { installAwsSdk } = npmCommands
+  let { writeFile, validate } = utils
   let error = require('./errors')(params)
   let project = params.inventory.inv._project
   let generate = require('../_generate')
@@ -34,9 +33,6 @@ node ./scripts/seed-users.js`
 node ./scripts/seed-users.js`)
       writeFile(prefsFile, prefs)
     }
-
-    // Install Dependencies
-    await installAwsSdk(params)
 
     let manifest = require('./magic-manifest')
 
