@@ -6,7 +6,7 @@
 
 Create a new Enhance project by running the command:
 
-`npx "@enhance/cli@latest" ./myproject -y`
+`npx "@enhance/cli@latest" new ./myproject -y`
 
 This will create a new Enhance project which includes the Enhance CLI as a dev dependency.
 
