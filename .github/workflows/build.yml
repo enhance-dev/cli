@@ -40,7 +40,7 @@ jobs:
         VER=`npm --version`; echo "npm ver:    $VER"
 
     - name: Install Globals
-      run: npm install -g @enhance/arc-plugin-enhance
+      run: npm install -g @enhance/arc-plugin-enhance@latest
 
     - name: Install
       run: npm install
