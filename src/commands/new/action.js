@@ -33,7 +33,7 @@ module.exports = async function (params) {
   }
 
   try {
-    createProject({ path, dest, name: appName })
+    await createProject({ path, dest, name: appName })
   }
   catch (err) {
     return error('project_found')
