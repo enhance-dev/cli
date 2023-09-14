@@ -1,6 +1,6 @@
 {
   "name": "@enhance/cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "bin": {
     "enhance": "src/index.js"
   },
