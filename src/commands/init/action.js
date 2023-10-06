@@ -34,7 +34,6 @@ enhance/arc-plugin-enhance
   if (existsSync(pkgFilePath)) {
     const pkgFile = require(join(dest, 'package.json'))
     pkgFile.scripts.enhance = 'enhance'
-    pkgFile.scripts.start = 'npx enhance dev'
     pkgFile.devDependencies['@enhance/cli'] = 'latest'
     pkgFile.devDependencies['@enhance/types'] = 'latest'
     pkgFile.dependencies['@enhance/arc-plugin-enhance'] = 'latest'
