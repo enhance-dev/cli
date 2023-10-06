@@ -1,4 +1,4 @@
-let names = { en: [ 'new', 'init' ] }
+let names = { en: [ 'new' ] }
 let action = require('./action')
 
 module.exports = {
@@ -21,16 +21,12 @@ module.exports = {
         },
         examples: [
           {
-            name: 'Create a new project in the current folder',
-            example: 'npx enhance new',
-          },
-          {
             name: 'Create a new project in the ./my-proj folder',
-            example: 'npx enhance new my-proj',
+            example: 'npx @enhance/cli new my-proj',
           },
           {
-            name: 'Create a new project with the name my-app',
-            example: 'npx enhance new project -n my-app',
+            name: 'Create a new project in the ./my-proj folder with the name my-app',
+            example: 'npx @enhance/cli new my-proj -n my-app',
           },
         ]
       },
