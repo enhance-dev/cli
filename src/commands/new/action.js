@@ -23,7 +23,7 @@ module.exports = async function (params) {
   if (existsSync(dest)) {
     let inventory = await _inventory({ cwd: dest })
     let invalid = inventory.inv._project.manifest
-    if (invalid) return error('project_found')
+    if (invalid) return error('path_exists')
   }
 
   // App name (optional)
