@@ -24,7 +24,7 @@
     "@architect/sandbox": "^5.8.2",
     "@architect/utils": "^3.1.9",
     "@colors/colors": "1.6.0",
-    "@enhance/create": "^3.1.4",
+    "@enhance/create": "^4.0.0",
     "enquirer": "^2.4.1",
     "escodegen": "^2.0.0",
     "esprima": "^4.0.1",
