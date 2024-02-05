@@ -21,7 +21,7 @@ let manifest = {
     { name: 'TextInput', package: '@enhance/form-elements', tagName: 'enhance-text-input' }
   ],
   dependencies: [
-    '@begin/validator@1.0.1',
+    '@begin/validator@1.0.3',
     '@enhance/form-elements'
   ],
   devDependencies: []
