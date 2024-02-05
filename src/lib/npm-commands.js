@@ -29,13 +29,6 @@ function install (params, opts) {
   })
 }
 
-async function installAwsSdk (params) {
-  if (process.env.NODE_ENV !== 'testing') {
-    let msg = `Installing 'aws-sdk' as a development dependency`
-    return install(params, { args: [ 'aws-sdk', '--save-dev' ], msg })
-  }
-}
-
 async function installDependencies (params, dependencies, dev = false) {
   if (process.env.NODE_ENV !== 'testing') {
     let { readFile } = require('fs/promises')
@@ -62,7 +55,6 @@ async function initialInstall (params, cwd) {
 }
 
 module.exports = {
-  installAwsSdk,
   installDependencies,
   initialInstall
 }
