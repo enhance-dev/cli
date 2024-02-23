@@ -55,6 +55,12 @@ async function action (params) {
           let specified = prefs?.http || n(port) || n(ARC_HTTP_PORT) || n(PORT)
           let link = c.green(c.bold(c.underline(`http://localhost:${specified}\n`)))
           process.stdout.write(link)
+          process.stdout.write('\n')
+
+          let cribsheetMsg = c.white('View the preconfigured Enhance utility classes')
+          let cribsheetLink = c.green(c.bold(c.underline(`http://localhost:${specified}/_styleguide/cribsheet\n`)))
+          console.error(`${ready} ${cribsheetMsg}`)
+          process.stdout.write(cribsheetLink)
         }
       }
       resolve()
