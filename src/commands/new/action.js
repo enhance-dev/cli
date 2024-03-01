@@ -32,8 +32,11 @@ module.exports = async function (params) {
     return error('invalid_appname')
   }
 
+  // Template url (optional)
+  let template = args.template || args.t ? args.template || args.t  : 'https://github.com/enhance-dev/enhance-starter-project'
+
   try {
-    await createProject({ path, dest, name: appName })
+    await createProject({ path, dest, name: appName, template })
   }
   catch (err) {
     return error('project_found')
