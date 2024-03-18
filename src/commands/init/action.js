@@ -20,6 +20,7 @@ module.exports = async function (params) {
   writeFileSync(join(dest, '.arc'),
     `@app
 enhance-app
+
 @plugins
 enhance/arc-plugin-enhance
 enhance/arc-plugin-styles
@@ -65,5 +66,5 @@ enhance/styles-cribsheet
   }
 
   // Success message
-  console.error(`Project successfully initialized!\nTo get started install the dependencies: ${c.bold(c.green(`npm install`))}\nand start the dev server ${c.bold(c.green(`npx enhance dev`))}`)
+  console.error(`Project successfully initialized!\nTo get started, install the dependencies: ${c.bold(c.green(`npm install`))}\nThen start the local development server: ${c.bold(c.green(`npx enhance dev`))}`)
 }
