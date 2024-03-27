@@ -18,6 +18,10 @@ let help = {
             name: 'new',
             description: 'Locally create a new project',
           },
+          {
+            name: 'init',
+            description: 'Initialize a new project in the current directory',
+          },
         ],
       },
       {
