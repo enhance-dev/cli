@@ -1,6 +1,7 @@
 module.exports = async function generate (params, args) {
+  let { printer } = params
   let { manifest, replacements, utils, command, project } = args
-  let { addElements, addRouteSource } = require('./utils')
+  let { addElements, addElementsFile, addRouteSource } = require('./utils')
   let { installDependencies } = require('../../../../lib/npm-commands')
   let { mutateArc, writeFile } = utils
   let { arcMutations = [], elements = [], dependencies = [], devDependencies = [] } = manifest
@@ -20,6 +21,9 @@ module.exports = async function generate (params, args) {
 
   // Write elements
   addElements(elements, writeFile)
+
+  // Write app/elements.mjs
+  addElementsFile(dependencies, writeFile, printer)
 
   // Copy source code
   addRouteSource({ manifest, replacements, writeFile, command })
