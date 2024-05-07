@@ -23,8 +23,8 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           path-to-signatures: 'signatures/v1/cla.json'
-          path-to-document: 'https://github.com/enhance-dev/.github/blob/cla/CLA.md'
+          path-to-document: 'https://github.com/enhance-dev/.github/blob/main/CLA.md'
           branch: 'main'
-          allowlist: user1,bot*
+          allowlist: brianleroux,colepeters,kristoferjoseph,macdonst,ryanbethel,ryanblock,tbeseda
           remote-organization-name: enhance-dev
           remote-repository-name: .github
