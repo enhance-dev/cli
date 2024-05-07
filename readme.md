@@ -1,4 +1,4 @@
-# Enhance CLI
+# Enhance CLI (Test CLA)
 
 [![GitHub CI status](https://github.com/enhance-dev/cli/workflows/Node%20CI/badge.svg)](https://github.com/enhance-dev/cli/actions?query=workflow%3A%22Node+CI%22)
 
