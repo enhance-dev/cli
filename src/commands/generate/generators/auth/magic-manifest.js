@@ -38,17 +38,9 @@ let manifest = {
     { src: '../scaffold/handlers/pages-list.js', target: 'app/pages/<ROUTE_NAME>.mjs' },
     { src: '../scaffold/handlers/pages-read.js', target: 'app/pages/<ROUTE_NAME>/$id.mjs' },
   ],
-  elements: [
-    { name: 'CheckBox', package: '@enhance/form-elements', tagName: 'enhance-checkbox' },
-    { name: 'FieldSet', package: '@enhance/form-elements', tagName: 'enhance-fieldset' },
-    { name: 'FormElement', package: '@enhance/form-elements', tagName: 'enhance-form' },
-    { name: 'LinkElement', package: '@enhance/form-elements', tagName: 'enhance-link' },
-    { name: 'PageContainer', package: '@enhance/form-elements', tagName: 'enhance-page-container' },
-    { name: 'SubmitButton', package: '@enhance/form-elements', tagName: 'enhance-submit-button' },
-    { name: 'TextInput', package: '@enhance/form-elements', tagName: 'enhance-text-input' }
-  ],
+  elements: [],
   dependencies: [
-    '@begin/validator@1.0.1',
+    '@begin/validator@1.0.3',
     '@enhance/form-elements'
   ],
   devDependencies: []

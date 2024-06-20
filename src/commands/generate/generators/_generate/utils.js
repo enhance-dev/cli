@@ -24,7 +24,27 @@ export default ${element.name}
   })
 }
 
+function addElementsFile (dependencies, writeFile, printer) {
+  const { existsSync } = require('fs')
+  let { join } = require('path')
+  let elementsFile = join(process.cwd(), 'app', 'elements.mjs')
+  console.log(elementsFile)
+  if (!existsSync(elementsFile) && dependencies.find(dep => dep.startsWith('@enhance/form-elements'))) {
+    writeFile(`app/elements.mjs`, `import elements from "@enhance/form-elements";
+export default elements;
+`)
+  }
+  else {
+    printer(`Add the following line to your app/elements.mjs file:
+
+import elements from "@enhance/form-elements";
+export default elements;
+`)
+  }
+}
+
 module.exports = {
   addElements,
+  addElementsFile,
   addRouteSource
 }
