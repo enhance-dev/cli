@@ -32,14 +32,6 @@ function html (lang, handlerFile) {
           ${handlerFile}
         </code>
       </div>
-      <div>
-        <p class="margin-bottom-8">
-          ${copy[lang].view_docs}
-        </p>
-        <code>
-          <a class="color-grey color-black-link" href="https://docs.begin.com">https://docs.begin.com</a>
-        </code>
-      </div>
     </div>
   </div>
 </body>
