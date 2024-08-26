@@ -302,5 +302,5 @@ function generateOpenAPI ({ plural, capPlural, singular, capSingular }, schema) 
 }
 
 module.exports = {
-  writeOpenAPI
+  writeOpenAPI,
 }

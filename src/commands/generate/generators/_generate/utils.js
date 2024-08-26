@@ -6,7 +6,7 @@ function addRouteSource ({ manifest, replacements = {}, writeFile, command }) {
   sourceFiles.forEach(file => {
     let dir = dirname(file.target).replace('<ROUTE_NAME>', routeName)
     mkdirSync(dir, { recursive: true })
-    // eslint-disable-next-line
+
     let source = require(`../${command}/${file.src}`)
     writeFile(file.target.replace('<ROUTE_NAME>', routeName), source(replacements))
   })
@@ -26,5 +26,5 @@ export default ${element.name}
 
 module.exports = {
   addElements,
-  addRouteSource
+  addRouteSource,
 }

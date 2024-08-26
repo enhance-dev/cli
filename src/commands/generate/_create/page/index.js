@@ -48,15 +48,15 @@ function addImport ({ tokens, path, name }) {
         'type': 'ImportDefaultSpecifier',
         'local': {
           'type': 'Identifier',
-          'name': name
-        }
-      }
+          'name': name,
+        },
+      },
     ],
     'source': {
       'type': 'Literal',
       'value': `./${filename}`,
-      'raw': `'./${filename}'`
-    }
+      'raw': `'./${filename}'`,
+    },
   })
   return tokens
 }
@@ -70,16 +70,16 @@ function addElement ({ tokens, path, name }) {
         'key': {
           'type': 'Literal',
           'value': `${tagName}`,
-          'raw': `'${tagName}'`
+          'raw': `'${tagName}'`,
         },
         'computed': false,
         'value': {
           'type': 'Identifier',
-          'name': name
+          'name': name,
         },
         'kind': 'init',
         'method': false,
-        'shorthand': false
+        'shorthand': false,
       })
       return token
     }

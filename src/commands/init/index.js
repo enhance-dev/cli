@@ -14,8 +14,8 @@ module.exports = {
             name: 'Create a new project in the current folder',
             example: 'npx @enhance/cli init',
           },
-        ]
+        ],
       },
     }
-  }
+  },
 }

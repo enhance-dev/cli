@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: ["error", { "caughtErrors": "none" }]*/
 let test = require('tape')
 let { constants: fsConstants, existsSync } = require('fs')
 let { access, readFile } = require('fs/promises')

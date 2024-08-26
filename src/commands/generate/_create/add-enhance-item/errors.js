@@ -1,7 +1,7 @@
 let errors = {
   en: {
     found_file: str => `File already exists: ${str}`,
-  }
+  },
 }
 
 module.exports = function error (lang, err, meta) {

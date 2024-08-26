@@ -12,7 +12,7 @@ function validateElementName (name) {
     'font-face-uri',
     'font-face-format',
     'font-face-name',
-    'missing-glyph'
+    'missing-glyph',
   ])
 
   let isPotentialCustomElementName = require('is-potential-custom-element-name')

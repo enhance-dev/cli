@@ -2,7 +2,7 @@ let copy = {
   en: {
     view_docs_js: 'View documentation at: https://arc.codes/docs/en/reference/runtime-helpers/node.js#arc.events',
     view_docs_python: 'View documentation at: https://arc.codes/docs/en/reference/runtime-helpers/python#arc.events',
-  }
+  },
 }
 
 let deno = lang => `// ${copy[lang].view_docs_js}

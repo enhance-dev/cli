@@ -38,7 +38,7 @@ module.exports = async function addItem (params) {
     let rawArc = mutateArc.upsert({
       item: `runtime ${runtime}`,
       pragma: 'aws',
-      raw: arc
+      raw: arc,
     })
     inventory = await _inventory({ rawArc })
   }

@@ -8,7 +8,7 @@ module.exports = {
         enhance: process.argv[0],
         version: appVersion,
         message,
-      }
+      },
     }
-  }
+  },
 }

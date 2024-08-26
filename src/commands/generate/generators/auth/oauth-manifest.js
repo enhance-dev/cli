@@ -18,8 +18,8 @@ let manifest = {
   elements: [
   ],
   dependencies: [
-    'arc-plugin-oauth'
-  ]
+    'arc-plugin-oauth',
+  ],
 }
 
 module.exports = manifest

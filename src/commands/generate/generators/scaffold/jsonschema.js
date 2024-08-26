@@ -1,7 +1,8 @@
+/* eslint no-unused-vars: ["error", { "caughtErrors": "none" }]*/
 function addKeyPropertyToSchema (schema) {
   if (!Object.keys(schema.properties).includes('key')) {
     schema.properties.key = {
-      type: 'string'
+      type: 'string',
     }
   }
   return schema
@@ -12,7 +13,7 @@ function createJsonSchema (id, ...properties) {
   let schema = {
     id: `${createModelName(id).capSingular}`,
     type: 'object',
-    properties: {}
+    properties: {},
   }
 
   properties.forEach(prop => {
@@ -31,17 +32,17 @@ function createProp (type) {
     'integer',
     'object',
     'array',
-    'boolean'
+    'boolean',
   ]
   if (standardJsonTypes.includes(type)) {
     return {
-      type: type
+      type: type,
     }
   }
   else {
     return {
       type: 'string',
-      format: type
+      format: type,
     }
   }
 }
@@ -91,5 +92,5 @@ module.exports = {
   existsJsonSchema,
   generateSchemaWithId,
   readSchemaFile,
-  writeJsonSchema
+  writeJsonSchema,
 }

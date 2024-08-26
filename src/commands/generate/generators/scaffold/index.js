@@ -37,9 +37,9 @@ module.exports = {
           {
             name: 'Scaffold a CRUD app from JSON Schema file',
             example: 'npx enhance generate scaffold --file person.schema.json',
-          }
-        ]
+          },
+        ],
       },
     }
-  }
+  },
 }

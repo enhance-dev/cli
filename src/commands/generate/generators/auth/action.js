@@ -28,7 +28,7 @@ module.exports = async function action (params, utils, command) {
 node ./scripts/seed-users.js`
       writeFile(prefsFile, prefs)
     }
-    else if (!project.localPreferences['sandbox-startup'].includes('node ./scripts/seed-users.js')){
+    else if (!project.localPreferences['sandbox-startup'].includes('node ./scripts/seed-users.js')) {
       prefs = prefs.replace('@sandbox-startup', `@sandbox-startup
 node ./scripts/seed-users.js`)
       writeFile(prefsFile, prefs)
@@ -50,7 +50,7 @@ node ./scripts/seed-users.js`)
         schema,
       },
       command,
-      utils
+      utils,
     })
   }
 }

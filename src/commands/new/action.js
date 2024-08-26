@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: ["error", { "caughtErrors": "none" }]*/
 module.exports = async function (params) {
   let { existsSync, writeFileSync } = require('fs')
   let { isAbsolute, join, normalize } = require('path')

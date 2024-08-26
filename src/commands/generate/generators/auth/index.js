@@ -24,9 +24,9 @@ module.exports = {
           {
             name: 'Basic Usage',
             example: 'npx enhance generate auth',
-          }
-        ]
+          },
+        ],
       },
     }
-  }
+  },
 }

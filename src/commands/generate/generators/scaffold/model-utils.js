@@ -7,11 +7,11 @@ function createModelName (modelName) {
     singular: pluralize.singular(name),
     capSingular: capitalize(pluralize.singular(name)),
     plural: pluralize.plural(name),
-    capPlural: capitalize(pluralize.plural(name))
+    capPlural: capitalize(pluralize.plural(name)),
   }
 }
 
 module.exports = {
   capitalize,
-  createModelName
+  createModelName,
 }

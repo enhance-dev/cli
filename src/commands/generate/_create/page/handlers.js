@@ -1,7 +1,7 @@
 let copy = {
   en: {
     view_docs: 'View documentation at: https://enhance.dev/docs/learn/starter-project/pages',
-  }
+  },
 }
 
 let javascript = lang => `// ${copy[lang].view_docs}

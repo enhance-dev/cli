@@ -56,5 +56,5 @@ async function initialInstall (params, cwd) {
 
 module.exports = {
   installDependencies,
-  initialInstall
+  initialInstall,
 }

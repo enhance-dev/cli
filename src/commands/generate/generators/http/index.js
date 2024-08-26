@@ -31,9 +31,9 @@ module.exports = {
           {
             name: 'Create a new HTTP route',
             example: 'npx enhance gen http --method get --path /',
-          }
-        ]
+          },
+        ],
       },
     }
-  }
+  },
 }

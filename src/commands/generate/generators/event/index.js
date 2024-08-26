@@ -20,9 +20,9 @@ module.exports = {
           {
             name: 'Create a new async event',
             example: 'npx enhance gen event --name my-event',
-          }
-        ]
-      }
+          },
+        ],
+      },
     }
-  }
+  },
 }

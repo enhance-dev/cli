@@ -37,8 +37,8 @@ module.exports = {
             name: 'Create a new project with the name my-app from template repo',
             example: 'npx enhance new project -n my-app -t https://github.com/enhance-dev/enhance-starter-project',
           },
-        ]
+        ],
       },
     }
-  }
+  },
 }

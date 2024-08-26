@@ -10,7 +10,7 @@ module.exports = function error (params) {
         invalid_cron_expression: `The specified cron expression is invalid`,
         invalid_rate_expression:  `The specified rate expression is invalid`,
         src_must_be_in_project: 'Function source path must be within your project',
-      }
+      },
     }
     return Error(errors[lang][err])
   }

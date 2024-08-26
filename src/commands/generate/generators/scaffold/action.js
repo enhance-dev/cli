@@ -45,7 +45,7 @@ module.exports = async function action (params, utils, command) {
     if (!project.arc.plugins.includes(`enhance/arc-plugin-openapi`)) {
       manifest.arcMutations.push({
         pragma: 'plugins',
-        item: `enhance/arc-plugin-openapi`
+        item: `enhance/arc-plugin-openapi`,
       })
     }
     manifest.dependencies.push('@enhance/arc-plugin-openapi')
@@ -57,6 +57,6 @@ module.exports = async function action (params, utils, command) {
     manifest,
     project,
     replacements: { ...modelName, schema, routeName },
-    utils
+    utils,
   })
 }

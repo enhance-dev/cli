@@ -29,9 +29,9 @@ module.exports = {
           {
             name: 'Create a new page route with path parameter',
             example: `npx enhance gen page --path '/notes/$id'`,
-          }
-        ]
-      }
+          },
+        ],
+      },
     }
-  }
+  },
 }

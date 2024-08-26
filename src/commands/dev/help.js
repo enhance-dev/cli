@@ -37,5 +37,5 @@ module.exports = {
         example: 'npx enhance dev --port 6666',
       },
     ],
-  }
+  },
 }

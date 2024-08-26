@@ -102,7 +102,7 @@ function input (key, schema, data, prefix = '') {
   else if (type === 'object') {
     elem = elem + `<enhance-fieldset legend="${capitalize(key)}">`
     elem = elem + Object.keys(schema.properties[key].properties).map(innerKey =>
-      input(innerKey, schema.properties[key], data, key)
+      input(innerKey, schema.properties[key], data, key),
     ).join('\n')
     elem = elem + `</enhance-fieldset>`
   }
@@ -126,7 +126,7 @@ function schemaToForm ({ action, schema, update = false, data }) {
   </div>
   <enhance-fieldset legend="${capitalize(schema?.id)}">
   ${Object.keys(schema.properties).map(key =>
-    input(key, schema, data)
+    input(key, schema, data),
   ).join('\n  ')}
   <enhance-submit-button style="float: right"><span slot="label">Save</span></enhance-submit-button>
   </enhance-fieldset>
@@ -134,5 +134,5 @@ function schemaToForm ({ action, schema, update = false, data }) {
 }
 
 module.exports = {
-  schemaToForm
+  schemaToForm,
 }

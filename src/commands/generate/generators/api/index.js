@@ -24,9 +24,9 @@ module.exports = {
           {
             name: 'Create a new API route with path parameter',
             example: `npx enhance gen api --path '/notes/$id'`,
-          }
-        ]
-      }
+          },
+        ],
+      },
     }
-  }
+  },
 }

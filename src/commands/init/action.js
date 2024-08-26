@@ -25,7 +25,7 @@ enhance-app
 enhance/arc-plugin-enhance
 enhance/arc-plugin-styles
 enhance/styles-cribsheet
-`
+`,
   )
 
   const pkgFilePath = join(dest, 'package.json')
@@ -48,7 +48,7 @@ enhance/styles-cribsheet
       "@enhance/styles-cribsheet": "latest"
     }
   }
-  `
+  `,
     )
   }
   else {
@@ -57,11 +57,11 @@ enhance/styles-cribsheet
 
   // Create an empty index.html page
   const dir = join(dest, 'app', 'pages')
-  if (!existsSync(dir)){
+  if (!existsSync(dir)) {
     mkdirSync(dir, { recursive: true })
   }
   const index = join(dir, 'index.html')
-  if (!existsSync(index)){
+  if (!existsSync(index)) {
     closeSync(openSync(index, 'w'))
   }
 

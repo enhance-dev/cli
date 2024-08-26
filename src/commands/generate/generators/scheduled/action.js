@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: ["error", { "caughtErrors": "none" }]*/
 let cwd = process.cwd()
 
 module.exports = async function action (params, utils) {

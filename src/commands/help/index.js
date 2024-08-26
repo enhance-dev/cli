@@ -48,7 +48,7 @@ let help = {
         example: 'npx enhance help generate',
       },
     ],
-  }
+  },
 }
 
 module.exports = {

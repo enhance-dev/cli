@@ -2,7 +2,7 @@ let modelName = {
   singular: 'user',
   capSingular: 'User',
   plural: 'users',
-  capPlural: 'Users'
+  capPlural: 'Users',
 }
 let routeName = 'users'
 let schema = {
@@ -11,14 +11,14 @@ let schema = {
   required: [ 'email' ],
   properties: {
     firstname: {
-      type: 'string'
+      type: 'string',
     },
     lastname: {
-      type: 'string'
+      type: 'string',
     },
     email: {
       type: 'string',
-      format: 'email'
+      format: 'email',
     },
     roles: {
       type: 'object',
@@ -28,28 +28,28 @@ let schema = {
           enum: [
             '',
             'admin',
-            'member'
-          ]
+            'member',
+          ],
         },
         role2: {
           type: 'string',
           enum: [
             '',
             'admin',
-            'member'
-          ]
+            'member',
+          ],
         },
         role3: {
           type: 'string',
           enum: [
             '',
             'admin',
-            'member'
-          ]
-        }
-      }
-    }
-  }
+            'member',
+          ],
+        },
+      },
+    },
+  },
 }
 
 module.exports = { modelName, routeName, schema }

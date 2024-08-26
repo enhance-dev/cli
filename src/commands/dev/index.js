@@ -17,7 +17,7 @@ async function action (params) {
 
   // TODO: output Sandbox start via printer
   let ver = `Enhance dev server (${appVersion})`
-  let logLevel = debug ? 'debug' : undefined || verbose ? 'verbose' : undefined
+  let logLevel = debug ? 'debug' : verbose || undefined  ? 'verbose' : undefined
   let quiet = logLevel ? false : true
 
   if (!quiet) {

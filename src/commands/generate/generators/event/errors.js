@@ -9,7 +9,7 @@ module.exports = function error (params, utils) {
         invalid_name: `Invalid event name`,
         invalid_runtime: `Function runtime must be one of: ${backtickify(runtimes)}`,
         src_must_be_in_project: 'Function source path must be within your project',
-      }
+      },
     }
     return Error(errors[lang][err])
   }

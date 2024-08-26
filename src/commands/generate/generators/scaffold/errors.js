@@ -4,7 +4,7 @@ module.exports = function error (params) {
     let errors = {
       en: {
         schema_already_exists: 'The schema already exists',
-      }
+      },
     }
     return Error(errors[lang][err])
   }

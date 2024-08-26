@@ -76,7 +76,7 @@ function writeFile (params) {
     en: {
       created_file: str => `Created file: ${str}`,
       updated_file: str => `Updated file: ${str}`,
-    }
+    },
   }
 
   return function (path, contents) {

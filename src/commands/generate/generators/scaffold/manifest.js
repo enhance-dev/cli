@@ -18,13 +18,13 @@ let manifest = {
     { name: 'LinkElement', package: '@enhance/form-elements', tagName: 'enhance-link' },
     { name: 'PageContainer', package: '@enhance/form-elements', tagName: 'enhance-page-container' },
     { name: 'SubmitButton', package: '@enhance/form-elements', tagName: 'enhance-submit-button' },
-    { name: 'TextInput', package: '@enhance/form-elements', tagName: 'enhance-text-input' }
+    { name: 'TextInput', package: '@enhance/form-elements', tagName: 'enhance-text-input' },
   ],
   dependencies: [
     '@begin/validator@1.0.3',
-    '@enhance/form-elements'
+    '@enhance/form-elements',
   ],
-  devDependencies: []
+  devDependencies: [],
 }
 
 module.exports = manifest

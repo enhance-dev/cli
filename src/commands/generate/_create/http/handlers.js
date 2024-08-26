@@ -3,7 +3,7 @@ let copy = {
     hello: 'Hello, Enhancener!',
     get_started: 'Get started by editing this file at:',
     view_docs: 'View documentation at:',
-  }
+  },
 }
 
 function html (lang, handlerFile) {

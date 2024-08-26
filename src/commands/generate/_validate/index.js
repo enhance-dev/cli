@@ -15,6 +15,6 @@ function project (params) {
 
 module.exports = function validate (params) {
   return {
-    project: project(params)
+    project: project(params),
   }
 }

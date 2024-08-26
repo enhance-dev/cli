@@ -6,7 +6,7 @@ function schemaToList ({ schema = {}, prefix = '' }) {
     else {
       return `<p class="pb-2"><strong class="capitalize">${key.replace(/([a-z])([A-Z])/g, '$1 $2')}: </strong>\${item?${prefix}.${key} || ''}</p>`
     }
-  }
+  },
   ).join('\n  ')
 }
 
