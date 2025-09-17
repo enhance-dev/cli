@@ -21,7 +21,7 @@
     "@apidevtools/json-schema-ref-parser": "9.1.0",
     "@architect/inventory": "^4.0.5",
     "@architect/parser": "^7.0.1",
-    "@architect/sandbox": "^6.0.5",
+    "@architect/sandbox": "^7.1.0",
     "@architect/utils": "^4.0.6",
     "@colors/colors": "1.6.0",
     "@enhance/create": "^4.1.2",
